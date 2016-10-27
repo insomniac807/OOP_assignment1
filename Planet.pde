@@ -1,27 +1,28 @@
 class Planet {
  
   float sizeof;
+  PVector moonCenter;
+  PShape planet;
+  PImage myimg;
   
-    Planet(float sizeof)
+    Planet(PShape planet)
     {
-        this.sizeof = sizeof;
+        this.planet = planet;
     }
     
-    Planet()
+    
+    void show()
     {
-        this.sizeof = 50;
+        shape(planet);
     }
     
-    void createPlanet()
+    void spawnMoon(float distance, PShape moon)
     {
-        sphere(sizeof);
-    }
-    
-    void spawnMoon(float distance, float incr)
-    {
-        Planet moon = new Planet(sizeof/2);
-        translate(distance, sizeof, -800);
-        moon.createPlanet();
+        moonCenter = new PVector(1, 0, 1);
+        moonCenter = moonCenter.mult(distance);
+        translate(moonCenter.x, moonCenter.y*0, -moonCenter.z);
+        shape(moon);
+        
     }
     
   
